@@ -19,24 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-of-eu0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="338"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="538"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySO-8E-Mcr">
-                                <rect key="frame" x="121" y="608" width="134" height="39"/>
+                                <rect key="frame" x="87.5" y="608" width="200" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="ShE-79-iCV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Start Your Trip"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hDE-of-eu0" secondAttribute="trailing" id="BTs-sY-csN"/>
-                            <constraint firstItem="ySO-8E-Mcr" firstAttribute="top" secondItem="hDE-of-eu0" secondAttribute="bottom" constant="250" id="Fyw-7o-wyk"/>
-                            <constraint firstItem="ySO-8E-Mcr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GXy-eE-IAt"/>
-                            <constraint firstItem="hDE-of-eu0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M6b-5Z-NIg"/>
-                            <constraint firstItem="hDE-of-eu0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YmL-GQ-P1Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hDE-of-eu0" secondAttribute="bottom" constant="300" id="j83-Pl-hKK"/>
-                            <constraint firstItem="hDE-of-eu0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jnY-tM-7Lc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ySO-8E-Mcr" secondAttribute="bottom" constant="20" id="k7v-Xc-Emt"/>
+                            <constraint firstItem="ySO-8E-Mcr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ae1-x8-RZz"/>
+                            <constraint firstItem="hDE-of-eu0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ovr-tF-hWt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ySO-8E-Mcr" secondAttribute="bottom" constant="20" id="Tug-Oo-rrH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ySO-8E-Mcr" secondAttribute="trailing" constant="87.5" id="WYp-t0-gCP"/>
+                            <constraint firstItem="hDE-of-eu0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ahp-ZD-ZuY"/>
+                            <constraint firstItem="ySO-8E-Mcr" firstAttribute="top" secondItem="hDE-of-eu0" secondAttribute="bottom" constant="50" id="dlF-Ud-tWi"/>
+                            <constraint firstItem="hDE-of-eu0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qzy-cL-wE1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
