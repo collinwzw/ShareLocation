@@ -20,6 +20,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-of-eu0">
                                 <rect key="frame" x="0.0" y="20" width="375" height="538"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tum-NR-sla"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySO-8E-Mcr">
                                 <rect key="frame" x="87.5" y="608" width="200" height="39"/>

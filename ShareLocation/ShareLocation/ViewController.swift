@@ -9,15 +9,30 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,CLLocationManagerDelegate {
+    var LocationManger = CLLocationManager()
     
     @IBOutlet weak var MKMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
         var centerLocation = CLLocationCoordinate2DMake(-27, 153)
         var mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         var mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
         self.MKMapView.setRegion(mapRegion, animated: true)
+ */
+        
+        self.LocationManger.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            
+            LocationManger.delegate = self
+            LocationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            LocationManger.startUpdatingLocation()
+        }
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -26,6 +41,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude)\(locValue.longitude)")
+        let userlocation = locations.last
+        let viewRegion =  MKCoordinateRegionMakeWithDistance((userlocation?.coordinate)!, 600, 600)
+        self.MKMapView.setRegion(viewRegion, animated: true)
+    }
     
 }
 
