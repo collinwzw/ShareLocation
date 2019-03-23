@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
-    var LocationManger = CLLocationManager()
-    
+    let locationManger = CLLocationManager()
+    var movedToUserLocation = false
     @IBOutlet weak var MKMapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
         self.MKMapView.setRegion(mapRegion, animated: true)MKMapView.delegate = self
  */
         MKMapView.delegate = self
-        LocationManger.delegate = self
-        LocationManger.desiredAccuracy = kCLLocationAccuracyBest
+        locationManger.delegate = self
+        locationManger.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         /*
         self.LocationManger.requestWhenInUseAuthorization()
         
@@ -54,6 +54,13 @@ class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelega
             
         }
     }
+    /*func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+    
+        if !movedToUserLocation {
+            mapView.region.center = mapView.userLocation.coordinate
+            movedToUserLocation = true
+        }
+    }*/
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude)\(locValue.longitude)")
