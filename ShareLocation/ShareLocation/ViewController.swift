@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController,CLLocationManagerDelegate {
+class ViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     var LocationManger = CLLocationManager()
     
     @IBOutlet weak var MKMapView: MKMapView!
@@ -19,9 +19,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         var centerLocation = CLLocationCoordinate2DMake(-27, 153)
         var mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         var mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
-        self.MKMapView.setRegion(mapRegion, animated: true)
+        self.MKMapView.setRegion(mapRegion, animated: true)MKMapView.delegate = self
  */
-        
+        MKMapView.delegate = self
+        LocationManger.delegate = self
+        LocationManger.desiredAccuracy = kCLLocationAccuracyBest
+        /*
         self.LocationManger.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled(){
@@ -31,7 +34,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             LocationManger.startUpdatingLocation()
         }
         
-        
+        */
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -40,7 +43,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status{
+        case .denied, .restricted:
+            print("acces denied or restricted")
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            manager.startUpdatingLocation()
+            
+        }
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude)\(locValue.longitude)")
